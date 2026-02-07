@@ -1,0 +1,28 @@
+fake_keywords = [
+    "breaking", "shocking", "unbelievable", "guaranteed",
+    "miracle", "secret", "exposed", "viral", "click here", "100%"]
+print("Welcome to Fake News Detector")
+print("Type'exit'to quit\n")
+while True:
+    news = input("Enter a news sentence: ").lower()
+    if news == "exit":
+        print("Goodbye, Fake News Hunter ")
+        break
+    suspicious_words = []
+    for word in fake_keywords:
+        if word in news:
+            suspicious_words.append(word)
+    score = len(suspicious_words)
+    total = len(fake_keywords)
+    credibility = 100 - (score / total) * 100
+    print("\n--- Analysis Report ---")
+    print("Suspicious words found:", suspicious_words)
+    print("Credibility Score:", round(credibility, 2), "%")
+    if credibility > 70:
+        print("Likely Real News")
+    elif credibility > 40:
+        print(" Doubtful News")
+    else:
+        print("Likely Fake News")
+
+    print("------------------------\n")
